@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">tower</string>
+    <string name="action_settings">Settings</string>
+    <string name="up">UP</string>
+    <string name="down">DOWN</string>
+    <string name="map">MAP:</string>
+    <string name="right">RIGHT</string>
+    <string name="action">ACTION</string>
+    <string name="left">LEFT</string>
+
+    <string name="title_activity_tower">tower</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="name">Name:</string>
+    <string name="start">Start</string>
+</resources>
