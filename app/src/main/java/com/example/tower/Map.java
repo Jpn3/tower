@@ -1,4 +1,4 @@
-package classes.tower.map.util;
+package com.example.tower;
 
 /**
  * Creates the map that a player can interact with.
@@ -10,12 +10,15 @@ public class Map {
     private char[][] map;
     //Were the player can move.
     private boolean[][] booleanBoard;
+    //size of the board
+    private int size;
 
     /**
      * Class' constructor, calls setMap function.
      */
-    Map() {
-        setMap(10);
+    Map(int setSize) {
+        size = setSize;
+        setMap(size);
     }
 
     /**

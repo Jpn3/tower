@@ -1,4 +1,6 @@
-package classes.tower.map.util;
+package com.example.tower;
+
+import android.widget.ScrollView;
 
 /**
  * Gives the player all the functions that can interact with the map.
@@ -26,11 +28,13 @@ public class Player extends Map {
      * @param setName sets the name of the player
      */
     public Player (String setName) {
+        super(10);
         name = setName;
         location[0] = 0;
         location[1] = 1;
         location[2] = 1;
-        System.out.println("Your goal is to complete all the challenges in this tower.");
+        java.lang.String intro = "Your goal is to complete all the challenges in this tower.";
+        //scrollView(intro);
     }
 
     /**

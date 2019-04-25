@@ -14,9 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-//import app.libs.java.classes.tower.map.util.Player;
-
 public class MainActivity extends AppCompatActivity {
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +34,10 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (toString.getText() != null) {
-                    String name = toString.getText().toString();
-                    Player playerOne = new Player(name);
-                }
-                if (MainActivity.this !=  null) {
-                    Intent nextScreen = Tower.createIntent(MainActivity.this);
-                    startActivity(nextScreen);
-                }
+                name = toString.getText().toString();
+                //Player(name);
+                Intent nextScreen = tower.createIntent(MainActivity.this);
+                startActivity(nextScreen);
             }
         });
     }
