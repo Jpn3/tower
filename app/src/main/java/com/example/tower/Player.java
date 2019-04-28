@@ -9,16 +9,16 @@ public class Player extends Map {
     /**
      * Character name
      */
-    private String name = "Geoff";
+    private static String name = "Geoff";
 
     /**
      * Player's position.
      */
-    private int[] location = new int[3];
+    private static int[] location = new int[3];
     /**
      * Item player is holding.
      */
-    private String item ="";
+    private static String item ="";
 
 
     /**
@@ -28,13 +28,13 @@ public class Player extends Map {
      * @param setName sets the name of the player
      */
     public Player (String setName) {
-        super(10);
-        name = setName;
-        location[0] = 0;
+        super(5);
+        if (!setName.equals("")) {
+            name = setName;
+        }
+        location[0] = 1;
         location[1] = 1;
         location[2] = 1;
-        java.lang.String intro = "Your goal is to complete all the challenges in this tower.";
-        //scrollView(intro);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Player extends Map {
      * @param newX Integer to be tested if the player can move that X location
      * @return a boolean if the person can or cannot; it also sets that newX as the x location
      */
-    private boolean setX(int newX) {
+    private static boolean setX(int newX) {
         if (check(newX, location[1])) {
             location[0] = newX;
             return (true);
@@ -58,7 +58,7 @@ public class Player extends Map {
      * @param newY Integer to be tested if the player can move that Y location
      * @return a boolean if the person can or cannot; it also sets that newX as the xYlocation
      */
-    private boolean setY(int newY) {
+    private static boolean setY(int newY) {
         if (check(location[0], newY)) {
             location[1] = newY;
             return (true);
@@ -71,20 +71,46 @@ public class Player extends Map {
      *Moves character up by 1
      *Prints if the player moves or not and if they move the 3 spaces in front of them are printed; if the player has won
      */
-    public void up() {
+    public static void up() {
         int newY = location[1] + 1;
         if (setY(newY)) {
-            System.out.println(" ");
-            System.out.println(name + " has moved north by 1");
-            System.out.println(name + " now sees:");
-            System.out.print(type(location[0] - 1, location[1] + 1));
-            System.out.print("| " + type(location[0], location[1] + 1) + "| ");
-            System.out.print(type(location[0] + 1, location[1] + 1) + ".");
-            System.out.println(" ");
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has moved up by 1");
+            Tower.scrollview(name + " now sees:");
+            Tower.scrollview(type(location[0] - 1, location[1] + 1) + "| " + type(location[0], location[1] + 1) + "| " + type(location[0] + 1, location[1] + 1) + ".");
+            Tower.scrollview(" ");
         } else {
-            System.out.println(" ");
-            System.out.println(name + " has not moved");
-            System.out.println(" ");
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has not moved");
+            Tower.scrollview(" ");
+        }
+    }
+    public static void down() {
+        int newY = location[1] - 1;
+        if (setY(newY)) {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has moved down by 1");
+            Tower.scrollview(name + " now sees:");
+            Tower.scrollview(type(location[0] - 1, location[1] - 1) + "| " + type(location[0], location[1] - 1) + "| " + type(location[0] + 1, location[1] - 1) + ".");
+            Tower.scrollview(" ");
+        } else {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has not moved");
+            Tower.scrollview(" ");
+        }
+    }
+    public static void right() {
+        int newX = location[0] + 1;
+        if (setY(newX)) {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has moved down by 1");
+            Tower.scrollview(name + " now sees:");
+            Tower.scrollview(type(location[0] - 1, location[1] - 1) + "| " + type(location[0], location[1] - 1) + "| " + type(location[0] + 1, location[1] - 1) + ".");
+            Tower.scrollview(" ");
+        } else {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has not moved");
+            Tower.scrollview(" ");
         }
     }
 }

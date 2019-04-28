@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class Tower extends AppCompatActivity {
 
-    TextView output;
+    static TextView output;
     Button up;
     Button down;
     Button left;
@@ -31,18 +31,49 @@ public class Tower extends AppCompatActivity {
         setSupportActionBar(toolbar);
         output = findViewById(R.id.output);
         output.setMovementMethod(new ScrollingMovementMethod());
+        scrollview("Your goal is to complete all the challenges in this tower.");
         up = findViewById(R.id.up);
+        up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Player.up();
+            }
+        });
         down = findViewById(R.id.down);
+        down.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Player.down();
+            }
+        });
         right = findViewById(R.id.right);
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Player.right();
+            }
+        });
         left = findViewById(R.id.left);
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Player.left();
+            }
+        });
         action = findViewById(R.id.action);
+        action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Player.action();
+            }
+        });
     }
 
     public static Intent createIntent(Context previous) {
         return new Intent(previous, Tower.class);
     }
 
-    public void scrollview(java.lang.String toAdd) {
+    public static void scrollview(java.lang.String toAdd) {
         output.append("\n" + toAdd);
     }
 }

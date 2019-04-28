@@ -5,11 +5,11 @@ package com.example.tower;
  */
 public class Map {
     //The type of floor the player encounters.
-    private String[][] tileType;
+    private static String[][] tileType;
     //A map of where the person has been.
-    private char[][] map;
+    private static char[][] map;
     //Were the player can move.
-    private boolean[][] booleanBoard;
+    private static boolean[][] booleanBoard;
     //size of the board
     private int size;
 
@@ -26,6 +26,19 @@ public class Map {
      * @param size dimensions of each floor.
      */
     private void setMap(int size) {
+        tileType = new String[size][size];
+        booleanBoard = new boolean[size][size];
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                tileType[x][y] = "ground";
+                booleanBoard[x][y] = false;
+            }
+        }
+        for (int x = 1; x < size -1 ; x++) {
+            for (int y = 1; y < size - 1; y ++) {
+                booleanBoard[x][y] = true;
+            }
+        }
 
     }
 
@@ -35,7 +48,7 @@ public class Map {
      * @param y y of new position
      * @return the boolean of the player's ability to move there.
      */
-    public boolean check(int x, int y) {
+    public static boolean check(int x, int y) {
         return booleanBoard[x][y];
     }
 
@@ -45,7 +58,7 @@ public class Map {
      * @param y y position
      * @return the type of tile
      */
-    public String type(int x, int y) {
+    public static String type(int x, int y) {
         return (tileType[x][y]);
     }
 }
