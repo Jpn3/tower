@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -31,6 +32,7 @@ public class Tower extends AppCompatActivity {
         setSupportActionBar(toolbar);
         output = findViewById(R.id.output);
         output.setMovementMethod(new ScrollingMovementMethod());
+        output.setGravity(Gravity.LEFT | Gravity.BOTTOM);
         scrollview("Your goal is to complete all the challenges in this tower.");
         up = findViewById(R.id.up);
         up.setOnClickListener(new View.OnClickListener() {

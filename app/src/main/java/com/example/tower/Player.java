@@ -103,14 +103,32 @@ public class Player extends Map {
         int newX = location[0] + 1;
         if (setY(newX)) {
             Tower.scrollview(" ");
-            Tower.scrollview(name + " has moved down by 1");
+            Tower.scrollview(name + " has moved right by 1");
             Tower.scrollview(name + " now sees:");
-            Tower.scrollview(type(location[0] - 1, location[1] - 1) + "| " + type(location[0], location[1] - 1) + "| " + type(location[0] + 1, location[1] - 1) + ".");
+            Tower.scrollview(type(location[0] + 1, location[1] + 1) + "| " + type(location[0] + 1, location[1]) + "| " + type(location[0] + 1, location[1] - 1) + ".");
             Tower.scrollview(" ");
         } else {
             Tower.scrollview(" ");
             Tower.scrollview(name + " has not moved");
             Tower.scrollview(" ");
         }
+    }
+    public static void left() {
+        int newX = location[0] - 1;
+        if (setY(newX)) {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has moved left by 1");
+            Tower.scrollview(name + " now sees:");
+            Tower.scrollview(type(location[0] - 1, location[1] + 1) + "| " + type(location[0] - 1, location[1]) + "| " + type(location[0] - 1, location[1] - 1) + ".");
+            Tower.scrollview(" ");
+        } else {
+            Tower.scrollview(" ");
+            Tower.scrollview(name + " has not moved");
+            Tower.scrollview(" ");
+        }
+    }
+
+    public static void action() {
+        Tower.scrollview("action");
     }
 }
