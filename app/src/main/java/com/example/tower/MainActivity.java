@@ -43,6 +43,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        // We will start writing our code here.
+    }
+
+    private void connected() {
+        // Then we will write some more code here.
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // And we will finish off here.
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);

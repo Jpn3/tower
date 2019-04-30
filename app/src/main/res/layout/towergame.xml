@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/map"
         android:layout_width="411dp"
-        android:layout_height="181dp"
+        android:layout_height="145dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="2dp"
         android:text="@string/map"
@@ -24,19 +24,17 @@
         android:id="@+id/up"
         android:layout_width="84dp"
         android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="508dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="143dp"
+        android:layout_marginLeft="143dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginRight="184dp"
+        android:layout_marginBottom="17dp"
         android:text="@string/up"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/action"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/map"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintTop_toBottomOf="@+id/output" />
 
     <Button
         android:id="@+id/down"

@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class Tower extends AppCompatActivity {
 
     static TextView output;
+    static TextView map;
     Button up;
     Button down;
     Button left;
@@ -33,12 +34,17 @@ public class Tower extends AppCompatActivity {
         output = findViewById(R.id.output);
         output.setMovementMethod(new ScrollingMovementMethod());
         output.setGravity(Gravity.LEFT | Gravity.BOTTOM);
+        map = findViewById(R.id.map);
+        map.setGravity(Gravity.CENTER | Gravity.BOTTOM);
+        map.setMovementMethod(new ScrollingMovementMethod());
+        mapView("--GPPG-- --GPPG-- -------- --------- --------- -------- -------- --------");
         scrollview("Your goal is to complete all the challenges in this tower.");
         up = findViewById(R.id.up);
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Player.up();
+                Map.printCharMap();
             }
         });
         down = findViewById(R.id.down);
@@ -46,6 +52,7 @@ public class Tower extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Player.down();
+                Map.printCharMap();
             }
         });
         right = findViewById(R.id.right);
@@ -53,6 +60,7 @@ public class Tower extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Player.right();
+                Map.printCharMap();
             }
         });
         left = findViewById(R.id.left);
@@ -60,6 +68,7 @@ public class Tower extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Player.left();
+                Map.printCharMap();
             }
         });
         action = findViewById(R.id.action);
@@ -67,6 +76,7 @@ public class Tower extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Player.action();
+                Map.printCharMap();
             }
         });
     }
@@ -77,5 +87,12 @@ public class Tower extends AppCompatActivity {
 
     public static void scrollview(java.lang.String toAdd) {
         output.append("\n" + toAdd);
+    }
+
+    public static void mapView(java.lang.String toSet) {
+        String[] array = toSet.split(" ");
+        for (int i = array.length - 1; i >= 0; i--) {
+            map.append("\n" + array[i]);
+        }
     }
 }
