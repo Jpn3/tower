@@ -1,2 +1,8 @@
 configurations.maybeCreate("default")
 artifacts.add("default", file('spotify-app-remote-release-0.6.1.aar'))
+
+dependencies {
+    // your app dependencies
+    implementation project(':spotify-app-remote-release-0.6.1')
+    implementation "com.google.code.gson:gson:2.8.5"
+}
