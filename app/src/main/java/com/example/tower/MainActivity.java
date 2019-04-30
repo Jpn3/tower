@@ -14,6 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+// Spotify imports.
+import com.spotify.android.appremote.api.ConnectionParams;
+import com.spotify.android.appremote.api.Connector;
+import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.client.Subscription;
+import com.spotify.protocol.types.PlayerState;
+import com.spotify.protocol.types.Track;
+
+import android.util.Log;
+
 //import app.libs.java.classes.tower.map.util.Player;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,17 +55,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // We will start writing our code here.
+        // Set the connection parameters
+        ConnectionParams connectionParams =
+                new ConnectionParams.Builder(CLIENT_ID)
+                        .setRedirectUri(REDIRECT_URI)
+                        .showAuthView(true)
+                        .build();
+        SpotifyAppRemote.connect(this, connectionParams,
+                new Connector.ConnectionListener() {
+
+                    @Override
+                    public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                        mSpotifyAppRemote = spotifyAppRemote;
+                        Log.d("MainActivity", "Connected! Yay!");
+
+                        // Now you can start interacting with App Remote
+                        connected();
+                    }
+
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.e("MainActivity", throwable.getMessage(), throwable);
+
+                        // Something went wrong when attempting to connect! Handle errors here
+                    }
+                });
     }
 
     private void connected() {
-        // Then we will write some more code here.
+        // Play a playlist
+        mSpotifyAppRemote.getPlayerApi().play("spotify:user:lpb2f9o6s2249uv8b5fmv00xm:playlist:3WR9lpFvsI0E9HLEAWbMht");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        // And we will finish off here.
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
 
     @Override
@@ -79,4 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private static final String CLIENT_ID = "f752f98f57044b4fa70d910e8f0e5ae3";
+    private static final String REDIRECT_URI = "https://accounts.spotify.com/authorize";
+    private SpotifyAppRemote mSpotifyAppRemote;
 }

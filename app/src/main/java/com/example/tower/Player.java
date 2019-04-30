@@ -109,7 +109,7 @@ public class Player extends Map {
         int newX = location[1] + 1;
         if (setX(newX)) {
             Tower.scrollview(" ");
-            Tower.scrollview(name + " has moved right by 1");
+            Tower.scrollview(name + " has moved left by 1");
             Tower.scrollview(name + " now sees:");
             Tower.scrollview(type(location[1] + 1, location[2] + 1) + "| " + type(location[1] + 1, location[2]) + "| " + type(location[1] + 1, location[2] - 1) + ".");
             Tower.scrollview(" ");
@@ -123,7 +123,7 @@ public class Player extends Map {
         int newX = location[1] - 1;
         if (setX(newX)) {
             Tower.scrollview(" ");
-            Tower.scrollview(name + " has moved left by 1");
+            Tower.scrollview(name + " has moved right by 1");
             Tower.scrollview(name + " now sees:");
             Tower.scrollview(type(location[1] - 1, location[2] + 1) + "| " + type(location[1] - 1, location[2]) + "| " + type(location[1] - 1, location[2] - 1) + ".");
             Tower.scrollview(" ");
