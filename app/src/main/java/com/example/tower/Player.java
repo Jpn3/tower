@@ -18,7 +18,7 @@ public class Player extends Map {
     /**
      * Item player is holding.
      */
-    private static String item ="";
+    private static String item = "";
     /**
      * Check for win condition;
      */
@@ -30,7 +30,7 @@ public class Player extends Map {
      *
      * @param newName sets the name of the player
      */
-    public Player (String newName) {
+    public Player(String newName) {
         super(10);
         if (!newName.equals("")) {
             String[] names = newName.split(" ");
@@ -77,8 +77,8 @@ public class Player extends Map {
     }
 
     /**
-     *Moves character up by 1
-     *Prints if the player moves or not and if they move the 3 spaces in front of them are printed; if the player has won
+     * Moves character up by 1
+     * Prints if the player moves or not and if they move the 3 spaces in front of them are printed; if the player has won
      */
     public static void up() {
         int newY = location[2] + 1;
@@ -94,6 +94,7 @@ public class Player extends Map {
             Tower.scrollview(" ");
         }
     }
+
     public static void down() {
         int newY = location[2] - 1;
         if (setY(newY)) {
@@ -108,6 +109,7 @@ public class Player extends Map {
             Tower.scrollview(" ");
         }
     }
+
     public static void left() {
         int newX = location[1] + 1;
         if (setX(newX)) {
@@ -122,6 +124,7 @@ public class Player extends Map {
             Tower.scrollview(" ");
         }
     }
+
     public static void right() {
         int newX = location[1] - 1;
         if (setX(newX)) {
@@ -136,12 +139,15 @@ public class Player extends Map {
             Tower.scrollview(" ");
         }
     }
+
     public static void action() {
         if (location[0] == 0) {
-          action0();
+            action0();
         } else if (location[0] == 1) {
-            action1();
+            actionKey();
         } else if (location[0] == 2) {
+            actionBucket();
+        } else if (location[0] == 3) {
             Tower.scrollview("Congrats!!!");
             Tower.scrollview("You Win!!");
             Tower.scrollview(" ");
@@ -150,7 +156,7 @@ public class Player extends Map {
         if (!win) {
             if (location[0] == 0) {
                 Tower.scrollview(name + " is outside the Tower:");
-                Tower.scrollview( "Your location is " + location[1] + " " + location[2] + ".");
+                Tower.scrollview("Your location is " + location[1] + " " + location[2] + ".");
                 Tower.scrollview(" ");
             } else {
                 Tower.scrollview(name + " is on floor " + location[0] + ":");
@@ -159,6 +165,7 @@ public class Player extends Map {
             }
         }
     }
+
     public static boolean switch1 = true;
     public static boolean switch2 = true;
 
@@ -194,11 +201,35 @@ public class Player extends Map {
         }
     }
 
+    public static boolean keyKey = true;
+
+    public static void actionKey() {
+        if (location[2] == 6) {
+            if (location[1] == 5) {
+                if (keyKey) {
+                    item = "keyKey";
+                    Tower.scrollview("You pick up the key.");
+                    Tower.scrollview(" ");
+                    keyKey = false;
+                    keyKey();
+                } else {
+                    Tower.scrollview("There is nothing to be done.");
+                    Tower.scrollview(" ");
+                }
+            } else if (location[1] == 2 && item.equals("keyKey")) {
+                keyToBucket();
+            }
+        } else {
+            Tower.scrollview("There is nothing to be done.");
+            Tower.scrollview(" ");
+        }
+    }
+
     public static boolean fire = true;
-    public static boolean key1 = true;
+    public static boolean keyBucket = true;
     public static boolean water = true;
 
-    public static void action1() {
+    public static void actionBucket() {
         if (location[2] == 3) {
             if (location[1] == 2 && item.equals("water")) {
                 if (fire) {
@@ -218,12 +249,12 @@ public class Player extends Map {
             }
         } else if (location[2] == 6) {
             if (location[1] == 1) {
-                if (key1) {
+                if (keyBucket) {
                     item = "key";
                     Tower.scrollview("You pick up the key.");
                     Tower.scrollview(" ");
                     key();
-                    key1 = false;
+                    keyBucket = false;
                 } else {
                     Tower.scrollview("There is nothing to be done.");
                     Tower.scrollview(" ");

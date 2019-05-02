@@ -37,7 +37,7 @@ public class Tower extends AppCompatActivity {
         map = findViewById(R.id.map);
         map.setGravity(Gravity.CENTER | Gravity.BOTTOM);
         map.setMovementMethod(new ScrollingMovementMethod());
-        mapView("--GPPG-- --GPPG-- -------- --------- --------- -------- -------- --------");
+        mapView("|--|--|G|P|P|G|--|--| |--|--|G|P|P|G|--|--| |--|--|--|--|--|--|--|--| |--|--|--|--|--|--|--|--| |--|--|--|--|--|--|--|--| |--|--|--|--|--|--|--|--| |--|--|--|--|--|--|--|--| |--|--|--|--|--|--|--|--|");
         scrollview("Your goal is to complete all the challenges in this tower.");
         up = findViewById(R.id.up);
         up.setOnClickListener(new View.OnClickListener() {
