@@ -50,7 +50,7 @@ public class Map {
         }
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
-                map[0][x][y] = "-";
+                map[0][x][y] = "--";
             }
         }
         tileType[0][3][6] = "tower";
@@ -94,7 +94,7 @@ public class Map {
         }
         for (int x = 0; x < tileType[1].length; x++) {
             for (int y = 0; y < tileType[1].length; y++) {
-                map[1][x][y] = "-";
+                map[1][x][y] = "--";
             }
         }
         tileType[1][4][0] = "door";
@@ -162,7 +162,7 @@ public class Map {
             for (int y = 0; y < tileType[1].length; y++) {
                 tileType[2][x][y] = "wall";
                 booleanBoard[2][x][y] = false;
-                map[2][x][y] = "-";
+                map[2][x][y] = "--";
             }
         }
         for (int x = 3; x < 7; x++) {
@@ -303,7 +303,10 @@ public class Map {
         String toPrint = "";
         for (int x = 0; x < map[1].length; x++) {
             for (int y = map[1].length - 1; y >= 1; y--) {
-                toPrint += map[floor][y][x];
+                if (y == map[1].length - 1) {
+                    toPrint += "|";
+                }
+                toPrint += map[floor][y][x] + "|";
                 if (y == 1) {
                     toPrint += " ";
                 }

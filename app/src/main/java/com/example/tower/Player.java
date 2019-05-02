@@ -19,7 +19,10 @@ public class Player extends Map {
      * Item player is holding.
      */
     private static String item ="";
-
+    /**
+     * Check for win condition;
+     */
+    private static boolean win = false;
 
     /**
      * Public constructor:
@@ -141,48 +144,107 @@ public class Player extends Map {
         } else if (location[0] == 2) {
             Tower.scrollview("Congrats!!!");
             Tower.scrollview("You Win!!");
+            Tower.scrollview(" ");
+            win = true;
         }
-
-        Tower.scrollview(location[0] + " " + location[1] + " " + location[2]);
+        if (!win) {
+            if (location[0] == 0) {
+                Tower.scrollview(name + " is outside the Tower:");
+                Tower.scrollview( "Your location is " + location[1] + " " + location[2] + ".");
+                Tower.scrollview(" ");
+            } else {
+                Tower.scrollview(name + " is on floor " + location[0] + ":");
+                Tower.scrollview("Your location is " + location[1] + " " + location[2] + ".");
+                Tower.scrollview(" ");
+            }
+        }
     }
+    public static boolean switch1 = true;
+    public static boolean switch2 = true;
 
     public static void action0() {
         if (location[2] == 4) {
             if (location[1] == 6) {
-                outsideSwitches();
+                if (switch1) {
+                    outsideSwitches();
+                    switch1 = false;
+                } else {
+                    Tower.scrollview("There is nothing to do here.");
+                    Tower.scrollview(" ");
+                }
             } else if (location[1] == 3) {
-                outsideSwitches();
+                if (switch2) {
+                    outsideSwitches();
+                    switch2 = false;
+                } else {
+                    Tower.scrollview("There is nothing to do here.");
+                    Tower.scrollview(" ");
+                }
             } else {
-                towerDoor();
+                if (!switch1 && !switch2) {
+                    towerDoor();
+                } else {
+                    Tower.scrollview("There is nothing to do here.");
+                    Tower.scrollview(" ");
+                }
             }
         } else {
             Tower.scrollview("There is nothing to do here.");
+            Tower.scrollview(" ");
         }
     }
+
+    public static boolean fire = true;
+    public static boolean key1 = true;
+    public static boolean water = true;
 
     public static void action1() {
         if (location[2] == 3) {
             if (location[1] == 2 && item.equals("water")) {
-                Tower.scrollview("You dump you bucket of water on the floor, and the fire goes out.");
-                fire();
-            }
-            if (location[1] == 5 && item.equals("key")) {
+                if (fire) {
+                    Tower.scrollview("You dump you bucket of water on the floor, and the fire goes out.");
+                    Tower.scrollview(" ");
+                    fire();
+                    fire = false;
+                } else {
+                    Tower.scrollview("There is nothing to be done.");
+                    Tower.scrollview(" ");
+                }
+            } else if (location[1] == 5 && item.equals("key")) {
                 lockedDoor();
+            } else {
+                Tower.scrollview("There is nothing to be done.");
+                Tower.scrollview(" ");
             }
         } else if (location[2] == 6) {
             if (location[1] == 1) {
-                item = "key";
-                Tower.scrollview("You pick up the key.");
-                key();
+                if (key1) {
+                    item = "key";
+                    Tower.scrollview("You pick up the key.");
+                    Tower.scrollview(" ");
+                    key();
+                    key1 = false;
+                } else {
+                    Tower.scrollview("There is nothing to be done.");
+                    Tower.scrollview(" ");
+                }
             }
         } else if (location[2] == 7) {
             if (location[1] == 4) {
-                item = "water";
-                Tower.scrollview("You pick up the bucket.");
-                water();
+                if (water) {
+                    item = "water";
+                    Tower.scrollview("You pick up the bucket.");
+                    Tower.scrollview(" ");
+                    water();
+                    water = false;
+                } else {
+                    Tower.scrollview("There is nothing to be done.");
+                    Tower.scrollview(" ");
+                }
             }
         } else {
             Tower.scrollview("There is nothing to be done.");
+            Tower.scrollview(" ");
         }
     }
 }
